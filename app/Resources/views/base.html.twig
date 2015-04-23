@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <!-- Fontawesome -->
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <!-- Bootstrap -->
+        {% block stylesheets %}
+            {% stylesheets 'css/bootstrap.css' filter='cssrewrite' %}
+                <link rel="stylesheet" media="screen" href="{{ asset_url }}" />
+            {% endstylesheets %}
+    
+            <!-- HTML5 Shim and Respond.js add IE8 support of HTML5 elements and media queries -->
+            {% include 'BraincraftedBootstrapBundle::ie8-support.html.twig' %}
+   
+        {% endblock %}
+        
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        {% block body %}
+
+        {% endblock %}
+        {% block javascripts %}
+            <!-- jQuery (necessary for Bootstraps JavaScript plugins) -->
+            <!-- Include all JavaScripts, compiled by Assetic -->
+            {% javascripts 
+                'js/jquery.js' 
+                'js/bootstrap.js'
+            %}
+                <script src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+        {% endblock %}
+    </body>
+</html>
